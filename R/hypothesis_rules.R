@@ -42,6 +42,10 @@ p <- Tree("S", list(Tree("NP",
                     list("I")),p))
 p
 
+
+### experimental data ###
+e1 <- Tree("NP", "PCA")
+
 print(p, width = 10)
 
 s <- "(S (NP I) (VP (V saw) (NP him)))"  # this is how users will create their syllogistic statements
@@ -50,15 +54,14 @@ print(p1,width=10)
 
 ## Extract the leaves by recursively traversing the children and
 ## recording the non-tree ones:
-Tree_leaf_gatherer <-
-  function()
-  {
+Tree_leaf_gatherer <- function(){
     v <- list()
     list(update =
            function(e) if(!inherits(e, "Tree")) v <<- c(v, list(e)),
          value = function() v,
          reset = function() { v <<- list() })
-  }
+}
+
 g <- Tree_leaf_gatherer()
 y <- Tree_apply(p, g$update, recursive = TRUE)
 g$value()
