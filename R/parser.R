@@ -26,11 +26,9 @@ library(igraph)
 ## (Rule 4) is u,v are terms, then (u = v) is an equation.
 ## (Rule 5) Nothing else is a term or an equation.
 ## In particular:
-## Boolean expressions like "(P & (Q v !R))" count as terms (they are formulas
-## of propostional logic).
+## Boolean expressions like "(P & (Q v !R))" count as terms (they are formulas of propostional logic).
 ## Algebraic expressions like "S(x + y)" count as terms.
-## Algebraic expressions like "((x + Sy) = S(x + y))" count as equations
-## (they are algebraic atomic formulas).
+## Algebraic expressions like "((x + Sy) = S(x + y))" count as equations (they are algebraic atomic formulas).
 
 ## The fundamental idea of the parser, given an argument string, is to 
 ## build a 'construction sequence' for that string by top-down parsing,
@@ -260,8 +258,7 @@ unary.alg.complexity <- function(txt){count.occurrences(txt,"S")}
 binary.log.complexity <- function(txt){count.occurrences(txt,"v") + count.occurrences(txt,"&") + count.occurrences(txt,">")}
 binary.alg.complexity <- function(txt){count.occurrences(txt,"+") + count.occurrences(txt,"prod") + count.occurrences(txt,"=")}
 complexity <- function(txt){unary.log.complexity(txt) + unary.alg.complexity(txt) + binary.log.complexity(txt) + binary.alg.complexity(txt)}
-test.binary.symb <- function(txt,symb){
-  count.occurrences(txt,symb)>0 & is.parenthesized(txt) & split.infix(txt,symb)[1] != FALSE}
+test.binary.symb <- function(txt,symb){count.occurrences(txt,symb)>0 & is.parenthesized(txt) & split.infix(txt,symb)[1] != FALSE}
 unary.matrix <- function(txt,C){rbind(delete.unary.prefix(txt,C),0,txt)}
 binary.matrix <- function(txt,C){rbind(c(split.infix(txt,C)[2],split.infix(txt,C)[1]),c(0,0),c(txt,txt))}
 

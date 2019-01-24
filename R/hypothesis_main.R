@@ -1,6 +1,5 @@
 # hypothesis_main.R
 # Hypothesis (theory) revision using Bayesian techniques.
-
 # https://www.semanticscholar.org/paper/Necessity%2C-possibility-and-belief%3A-a-study-of-Evans-Handley/e5bd73cbab1477d95719fc3fc8209759bf3fc1eb?tab=abstract&citingPapersSort=is-influential&citingPapersLimit=10&citingPapersOffset=10&citedPapersSort=is-influential&citedPapersLimit=10&citedPapersOffset=0
 # http://www.bnlearn.com/documentation/man/
 # https://cran.r-project.org/web/packages/OneR/vignettes/OneR.html
@@ -19,7 +18,7 @@ plot(bn1)
 bn2 <- model2network("[C][F][A|C][E|A:C][D|C:E:F][B|A:C:D:F]")
 plot(bn2)
 
-bn3 <- model2network("[C][F][B|A][D|A:C:E][E|B:F][A|F]",debug = TRUE)
+bn3 <- model2network("[C][F][B|A][D|A:C:E][E|B:F][A|F]",debug = FALSE)
 plot(bn3)
 
 #
